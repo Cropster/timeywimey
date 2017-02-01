@@ -1,7 +1,4 @@
-# Timeywimey
-
-[![Build Status](https://travis-ci.com/meetup/ant-stats.svg?token=JyeXcy6CsrwmUv612zPA&branch=master)](https://travis-ci.com/meetup/timeywimey)
-[![Coverage Status](https://coveralls.io/repos/github/meetup/ant-stats/badge.svg?branch=master&t=jPxTiT)](https://coveralls.io/github/meetup/timeywimey?branch=master)
+# timey-wimey
 
 ## Description
 
@@ -11,51 +8,20 @@ Timeywimey is a collection of libraries providing conversion utilities for JodaT
 
 `timeywimey-scala` includes Scala implicits to provide syntactic sugars `.asJava` and `.asJoda`.
 
-## Project structure
-```
-.-+-timeywimey-core
-  |  +-src
-  |  |  +-main
-  |  |  |  +-java
-  |  |  |     +-com.meetup.timeywimey
-  |  |  |        +-JodaConverters.java
-  |  |  |        +-LegacyConverters.java
-  |  |  +-test
-  |  |     +-java
-  |  |        +-com.meetup.timeywimey
-  |  |           +-JodaConvertersTest.java
-  |  |           +-LegacyConvertersTest.java
-  |  +-build.sbt
-  |
-  +-timeywimey-scala
-  |  +-src
-  |  |  +-main
-  |  |  |  +-scala
-  |  |  |     +-com.meetup.timeywimey
-  |  |  |        +-JodaConverterImplicits.scala
-  |  |  |        +-LegacyConverterImplicits.scala
-  |  |  +-test
-  |  |    +-scala
-  |  |        +-com.meetup.timeywimey
-  |  |           +-JodaConverterImplicitsTest.scala
-  |  |           +-LegacyConverterImplicitsTest.scala
-  |  +-build.sbt
-  |
-  +-project
-  |  +-Build.scala
-  |  +-build.properties
-  |  +-plugins.sbt
-  |
-  +-.gitignore
-  +-Makefile
-  +-README.md
-  +-build.sbt
-```
+This is a Cropster maintained version of the [original project from meetup](https://github.com/meetup/timeywimey).
 
-## Build
+See the [original README](README-orig.md) for more details and usage.
 
-Use sbt 0.13+ for testing (Scalatest) and building.
 
-## License
+## Build and Publish
 
-Timeywimey is released under the MIT License (https://opensource.org/licenses/MIT)
+
+1. Configure your `gradle.properties`, from `gradle.properties.sample`
+2. Build and test
+  ```
+  gradle build test
+  ```
+3. Publish to Nexus
+  ```
+  gradle publish
+  ```
