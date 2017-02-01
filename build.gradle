@@ -1,0 +1,52 @@
+subprojects {
+  apply plugin: 'java'
+  apply plugin: 'eclipse-wtp'
+  apply plugin: 'maven-publish'
+
+  repositories {
+    mavenCentral()
+    maven {
+      url "${nexusUrl}"
+        credentials {
+          username "${nexusUser}"
+          password "${nexusPass}"
+        }
+    }
+    mavenLocal()
+  }
+
+  dependencies {
+    testCompile 'junit:junit:4.12'
+  }
+
+  version = '1.0'
+
+  jar {
+      manifest.attributes provider: 'gradle'
+  }
+
+  publishing {
+    publications {
+      mavenJava(MavenPublication) {
+        from components.java
+      }
+    }
+  }
+
+  publishing {
+    repositories {
+      maven {
+        credentials {
+          username "${nexusUser}"
+          password "${nexusPass}"
+        }
+
+        if (project.version.endsWith('-SNAPSHOT')) {
+          url nexusSnapshotsUrl
+        } else {
+          url nexusReleasesUrl
+        }
+      }
+    }
+  }
+}
